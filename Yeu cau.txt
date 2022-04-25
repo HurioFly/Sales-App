@@ -1,0 +1,29 @@
+1. Đặt vấn đề
+- Bối cảnh xuất hiện bài toán là gì?
+- Bài toán đã được giải quyết chưa, giải quyết như thế nào?
+- Tại sao cần giải quyết bài toán này?
+- Phạm vi vấn đề giải quyết?
+- Giải quyết bằng công cụ, công nghệ, kỹ thuật, lý thuyết nào?
+- Cấu trúc báo cáo là gì?
+2. Trình bày công cụ, công nghệ, kỹ thuật, lý thuyết sử dụng trong dự án
+3. Phân tích và thiết kế hệ thống
+4. Triển khai cài đặt, kết quả đạt được
+5. Kiểm thử hệ thống (kế hoạch, test case, thực thi test case, báo cáo kết quả kiểm thử)
+6. Kết luận
+- Những kết quả đã đạt được
+- Hướng phát triển là gì
+
+Phụ lục Hướng dẫn sử dụng hệ thống
+
+Đối với hệ thống bán hàng online
+Nhóm chức năng cho khách hàng
+Nhóm chức năng cho quản trị
+Nhóm chức năng cho nhân viên bán hàng
+
+-Cho phép phía khách hàng: xem sản phẩm, tìm kiếm sản phẩm, đăng nhập, đăng kí tài khoản, đặt hàng, theo dõi đơn hàng...
+-Cho phép phía quản trị hệ thống: quản lý sản phẩm, nhà cung cấp, chủng loại sản phẩm,....
+- Cho phép nhân viên cửa hàng: quản lý và xử lý đơn hàng, xem các báo cáo doanh thu theo sản phẩm/nhóm sản phẩm, theo thời gian, nhà cung cấp,...
+Các yêu cầu khác: 
+- Phân tích yêu cầu và Xây dựng bản thiết kế theo đúng quy chuẩn, đầy đủ nội dung
+- Có cấu trúc dữ liệu chuẩn hóa, phù hợp với thực hiễn, giao diện chuyên nghiệp, dễ sử dụng
+- Có kế hoạch và thực hiện đánh giá kiểm thử hệ thống.
