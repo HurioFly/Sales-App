@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ProductActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/toolbarProduct"
+        app:title="Điện thoại"
+        android:background="#5c6bc0"
+        app:titleTextColor="@color/white">
+
+        <FrameLayout
+            android:layout_width="80dp"
+            android:layout_height="?attr/actionBarSize"
+            android:id="@+id/frameLayoutCart"
+            android:layout_gravity="right">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_cart_24"
+                android:layout_gravity="center"/>
+
+            <com.nex3z.notificationbadge.NotificationBadge
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/notificationBadgeOrderQuantity"
+                android:layout_gravity="top|right"/>
+
+        </FrameLayout>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            app:queryHint="Nhập tên sản phẩm cần tìm"
+            android:layout_gravity="right"
+            app:searchIcon="@drawable/ic_search_24"
+            app:searchHintIcon="@drawable/ic_search_24"
+            android:theme="@style/AppSearchView"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarProduct"
+        android:id="@+id/recycleViewProduct"
+        android:background="#f3f3f3"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
