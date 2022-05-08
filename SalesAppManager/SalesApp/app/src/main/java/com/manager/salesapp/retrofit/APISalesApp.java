@@ -1,21 +1,20 @@
-package com.example.salesapp.retrofit;
+package com.manager.salesapp.retrofit;
 
-import com.example.salesapp.model.Order;
-import com.example.salesapp.model.OrderModel;
-import com.example.salesapp.model.Product;
-import com.example.salesapp.model.ProductModel;
-import com.example.salesapp.model.ProductType;
-import com.example.salesapp.model.ProductTypeModel;
-import com.example.salesapp.model.User;
-import com.example.salesapp.model.UserModel;
-
-import java.util.List;
+import com.manager.salesapp.model.OrderModel;
+import com.manager.salesapp.model.ProductModel;
+import com.manager.salesapp.model.ProductTypeModel;
+import com.manager.salesapp.model.UserModel;
 
 import io.reactivex.rxjava3.core.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface APISalesApp {
     @GET("getproducttype.php")
@@ -78,6 +77,21 @@ public interface APISalesApp {
             @Field("productID") int productID
     );
 
+    @POST("insertproduct.php")
+    @FormUrlEncoded
+    Observable<String> insertProduct(
+            @Field("productName") String productName,
+            @Field("productImage") String productImage,
+            @Field("productPrice") int productPrice,
+            @Field("productDescription") String productDescription,
+            @Field("remainingProducts") int remainingProducts,
+            @Field("productTypeID") int productTypeID
+    );
+
+    @Multipart
+    @POST("uploadimage.php")
+    Call<String> uploadFile(@Part MultipartBody.Part file, @Part("file") RequestBody name);
+
     @POST("updateuser.php")
     @FormUrlEncoded
     Observable<String> updateUserName(
@@ -97,5 +111,26 @@ public interface APISalesApp {
     Observable<String> updateUserPassword(
             @Field("phoneNumber") String phoneNumber,
             @Field("newPassword") String newPassword
+    );
+
+    @POST("getproduct.php")
+    Observable<ProductModel> getAllProduct();
+
+    @POST("deleteproduct.php")
+    @FormUrlEncoded
+    Observable<String> deleteProduct(
+            @Field("productID") int productID
+    );
+
+    @POST("updateproduct.php")
+    @FormUrlEncoded
+    Observable<String> updateProduct(
+            @Field("productID") int productID,
+            @Field("productName") String productName,
+            @Field("productImage") String productImage,
+            @Field("productPrice") int productPrice,
+            @Field("productDescription") String productDescription,
+            @Field("remainingProducts") int remainingProducts,
+            @Field("productTypeID") int productTypeID
     );
 }

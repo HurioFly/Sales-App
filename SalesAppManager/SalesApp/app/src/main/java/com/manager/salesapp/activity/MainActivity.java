@@ -1,11 +1,10 @@
-package com.example.salesapp.activity;
+package com.manager.salesapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,16 +21,16 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
-import com.example.salesapp.R;
-import com.example.salesapp.adapter.LatestProductAdapter;
-import com.example.salesapp.adapter.ProductTypeAdapter;
-import com.example.salesapp.model.Product;
-import com.example.salesapp.model.ProductType;
-import com.example.salesapp.model.User;
-import com.example.salesapp.retrofit.APISalesApp;
-import com.example.salesapp.retrofit.RetrofitClient;
-import com.example.salesapp.utils.Connection;
-import com.example.salesapp.utils.Utils;
+import com.manager.salesapp.R;
+import com.manager.salesapp.adapter.LatestProductAdapter;
+import com.manager.salesapp.adapter.ProductTypeAdapter;
+import com.manager.salesapp.model.Product;
+import com.manager.salesapp.model.ProductType;
+import com.manager.salesapp.model.User;
+import com.manager.salesapp.retrofit.APISalesApp;
+import com.manager.salesapp.retrofit.RetrofitClient;
+import com.manager.salesapp.utils.Connection;
+import com.manager.salesapp.utils.Utils;
 import com.google.android.material.navigation.NavigationView;
 import com.nex3z.notificationbadge.NotificationBadge;
 
@@ -117,7 +116,12 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(accountPage);
                         drawerLayoutMainPage.closeDrawer(GravityCompat.START);
                         break;
-                    case 7:
+                    case 5:
+                        Intent managerPage = new Intent(getApplicationContext(), ProductManagerActivity.class);
+                        startActivity(managerPage);
+                        drawerLayoutMainPage.closeDrawer(GravityCompat.START);
+                        break;
+                    case 8:
                         Utils.user = new User();
                         Paper.book().delete("user");
                         Intent login = new Intent(getApplicationContext(), LoginActivity.class);
@@ -182,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
                                 productTypeList.add(0,new ProductType("Trang chủ", "https://www.pngkey.com/png/full/18-186124_home-icon-png-blue.png"));
                                 productTypeList.add(new ProductType("Lịch sử mua hàng", "https://cdn.iconscout.com/icon/free/png-256/history-2634428-2187385.png"));
                                 productTypeList.add(new ProductType("Thông tin tài khoản", "https://dellvn.net/HinhPhu/login1.png"));
+                                productTypeList.add(new ProductType("Quản lý", "https://cdn-icons-png.flaticon.com/512/1802/1802979.png"));
                                 productTypeList.add(new ProductType("Giới thiệu", "https://everythinggoesdance.com/wp-content/uploads/2014/07/Very-Basic-Info-icon.png"));
                                 productTypeList.add(new ProductType("Liên hệ với chúng tôi", "https://iconarchive.com/download/i86075/graphicloads/100-flat-2/phone.ico"));
                                 productTypeList.add(new ProductType("Đăng xuất", "https://cdn0.iconfinder.com/data/icons/interface-icons-rounded/110/Logout-512.png"));

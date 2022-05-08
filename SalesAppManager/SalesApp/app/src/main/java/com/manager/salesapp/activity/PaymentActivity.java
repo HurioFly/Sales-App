@@ -1,4 +1,4 @@
-package com.example.salesapp.activity;
+package com.manager.salesapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,10 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.salesapp.R;
-import com.example.salesapp.retrofit.APISalesApp;
-import com.example.salesapp.retrofit.RetrofitClient;
-import com.example.salesapp.utils.Utils;
+import com.manager.salesapp.R;
+import com.manager.salesapp.retrofit.APISalesApp;
+import com.manager.salesapp.retrofit.RetrofitClient;
+import com.manager.salesapp.utils.Utils;
 import com.google.gson.Gson;
 
 import java.text.DecimalFormat;

@@ -1,4 +1,4 @@
-package com.example.salesapp.activity;
+package com.manager.salesapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,17 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.salesapp.R;
-import com.example.salesapp.adapter.CartAdapter;
-import com.example.salesapp.model.EventBus.CalculateTotalPaymentEvent;
-import com.example.salesapp.model.EventBus.CartEmptyEvent;
-import com.example.salesapp.utils.Utils;
+import com.manager.salesapp.R;
+import com.manager.salesapp.adapter.CartAdapter;
+import com.manager.salesapp.model.EventBus.CalculateTotalPaymentEvent;
+import com.manager.salesapp.model.EventBus.CartEmptyEvent;
+import com.manager.salesapp.utils.Utils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
