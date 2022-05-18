@@ -133,4 +133,14 @@ public interface APISalesApp {
             @Field("remainingProducts") int remainingProducts,
             @Field("productTypeID") int productTypeID
     );
+
+    @POST("getorder.php")
+    Observable<OrderModel> getAllOrder();
+
+    @POST("updateorder.php")
+    @FormUrlEncoded
+    Observable<String> updateOrder(
+            @Field("orderID") int orderID,
+            @Field("orderStatus") String orderStatus
+    );
 }

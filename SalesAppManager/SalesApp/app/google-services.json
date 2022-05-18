@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "194329369182",
+    "project_id": "sales-app-fc4b3",
+    "storage_bucket": "sales-app-fc4b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194329369182:android:8a967c82ee782ac48fb2cf",
+        "android_client_info": {
+          "package_name": "com.manager.salesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194329369182-uhn5kcl67us9qeef7qgk1qeo14esklak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLx0TjtyGTzTpe8BnmhEXBdi2E0FZKRNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194329369182-uhn5kcl67us9qeef7qgk1qeo14esklak.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

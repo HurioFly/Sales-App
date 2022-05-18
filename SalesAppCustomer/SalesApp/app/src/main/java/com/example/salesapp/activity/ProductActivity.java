@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.salesapp.R;
 import com.example.salesapp.adapter.ProductAdapter;
 import com.example.salesapp.model.Product;
+import com.example.salesapp.model.ProductType;
 import com.example.salesapp.retrofit.APISalesApp;
 import com.example.salesapp.retrofit.RetrofitClient;
 import com.example.salesapp.utils.Connection;
@@ -38,7 +39,7 @@ public class ProductActivity extends AppCompatActivity {
     APISalesApp apiSalesApp;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    int productTypeID;
+    ProductType productType;
     String productName = "";
 
     List<Product> productList = new ArrayList<>();
@@ -57,7 +58,7 @@ public class ProductActivity extends AppCompatActivity {
         if(Connection.isConnected(this)) {
             init();
             actionBar();
-            getData(productTypeID, productName);
+            getData(productType.getProductTypeID(), productName);
             getEventClick();
         }
         else {
@@ -83,7 +84,7 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 productName = searchView.getQuery().toString();
-                getData(productTypeID, productName);
+                getData(productType.getProductTypeID(), productName);
                 return true;
             }
         });
@@ -108,12 +109,7 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     private void actionBar() {
-        if(productTypeID == 2) {
-            toolbarProduct.setTitle("Điện thoại");
-        }
-        else {
-            toolbarProduct.setTitle("Laptop");
-        }
+        toolbarProduct.setTitle(productType.getProductTypeName());
 
         setSupportActionBar(toolbarProduct);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -132,7 +128,7 @@ public class ProductActivity extends AppCompatActivity {
         recycleViewProduct.setLayoutManager(linearLayoutManager);
         recycleViewProduct.setHasFixedSize(true);
 
-        productTypeID = getIntent().getIntExtra("productTypeID", -1);
+        productType = (ProductType) getIntent().getSerializableExtra("productType");
 
         apiSalesApp = RetrofitClient.getInstance(Utils.BASE_URL).create(APISalesApp.class);
 
@@ -155,7 +151,7 @@ public class ProductActivity extends AppCompatActivity {
         searchView.setIconified(true);
         searchView.clearFocus();
 
-        getData(productTypeID, productName);
+        getData(productType.getProductTypeID(), productName);
     }
 
     @Override

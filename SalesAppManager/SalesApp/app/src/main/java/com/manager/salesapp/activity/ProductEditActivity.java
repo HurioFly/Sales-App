@@ -53,8 +53,8 @@ public class ProductEditActivity extends AppCompatActivity {
     APISalesApp apiSalesApp;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    List<ProductType> productTypeList = new ArrayList<>();
-    List<String> productTypeNameList = new ArrayList<>();
+    List<ProductType> productTypeList;
+    List<String> productTypeNameList;
     ArrayAdapter<String> spinnerAdapter;
 
     String mediaPath;
@@ -221,10 +221,24 @@ public class ProductEditActivity extends AppCompatActivity {
         editTextProductPrice.setText(product.getProductPrice() + "");
         editTextProductDescription.setText(product.getProductDescription());
         editTextRemainingProducts.setText(product.getRemainingProducts() + "");
-        for(int i=0; i< productTypeList.size(); i++) {
-            if(productTypeList.get(i).getProductTypeID() == product.getProductID()) {
-                spinnerProductType.setSelection(i);
-            }
+
+        switch (product.getProductTypeID()) {
+            case 1:
+                spinnerProductType.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        spinnerProductType.setSelection(0);
+                    }
+                });
+                break;
+            case 2:
+                spinnerProductType.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        spinnerProductType.setSelection(1);
+                    }
+                });
+                break;
         }
     }
 
@@ -236,7 +250,6 @@ public class ProductEditActivity extends AppCompatActivity {
                         productTypeModel -> {
                             if(productTypeModel.getSuccess()) {
                                 productTypeList = productTypeModel.getProductTypeList();
-                                productTypeNameList = new ArrayList<>();
                                 int n = productTypeList.size();
                                 for(int i=0; i<n; i++) {
                                     productTypeNameList.add(productTypeList.get(i).getProductTypeName());
@@ -279,6 +292,9 @@ public class ProductEditActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         product = (Product) intent.getSerializableExtra("product");
+
+        productTypeList = new ArrayList<>();
+        productTypeNameList = new ArrayList<>();
     }
 
     @Override

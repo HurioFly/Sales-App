@@ -63,7 +63,6 @@ public class SplashActivity extends AppCompatActivity {
                                                 finish();
                                             }
                                             else {
-                                                Toast.makeText(getApplicationContext(), "Tài khoản này đã bị xóa!", Toast.LENGTH_LONG).show();
                                                 Paper.book().delete("user");
                                                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                                                 startActivity(intent);

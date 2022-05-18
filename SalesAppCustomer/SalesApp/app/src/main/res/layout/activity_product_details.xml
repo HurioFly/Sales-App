@@ -50,7 +50,8 @@
             android:layout_height="150dp"
             android:id="@+id/imageViewProductImage"
             android:src="@mipmap/ic_launcher"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:layout_width="match_parent"

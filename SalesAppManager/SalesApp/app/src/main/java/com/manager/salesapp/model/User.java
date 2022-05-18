@@ -17,6 +17,9 @@ public class User {
     @SerializedName("address")
     @Expose
     private String address;
+    @SerializedName("accountType")
+    @Expose
+    private int accountType;
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -48,5 +51,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(int accountType) {
+        this.accountType = accountType;
     }
 }

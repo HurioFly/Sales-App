@@ -46,6 +46,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         holder.textViewConsigneeName.setText("Người nhận: " + order.getConsigneeName());
         holder.textViewConsigneeAddress.setText("Địa chỉ nhận: " + order.getConsigneeAddress());
         holder.textViewConsigneePhoneNumber.setText("Số điện thoại người nhận: " + order.getConsigneePhoneNumber());
+        holder.textViewOrderStatus.setText("Tình trạng đơn hàng: " + order.getOrderStatus());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 holder.recycleViewOrderDetails.getContext(),
@@ -66,7 +67,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     }
 
     public class OrderViewHolder extends RecyclerView.ViewHolder{
-        TextView textViewOrderID, textViewDateCreated, textViewTotalPayment, textViewPaymentMethods, textViewConsigneeName, textViewConsigneeAddress, textViewConsigneePhoneNumber;
+        TextView textViewOrderID, textViewDateCreated, textViewTotalPayment, textViewPaymentMethods, textViewConsigneeName, textViewConsigneeAddress, textViewConsigneePhoneNumber, textViewOrderStatus;
         RecyclerView recycleViewOrderDetails;
 
         public OrderViewHolder(@NonNull View itemView) {
@@ -78,6 +79,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             textViewConsigneeName = itemView.findViewById(R.id.textViewConsigneeName);
             textViewConsigneeAddress = itemView.findViewById(R.id.textViewConsigneeAddress);
             textViewConsigneePhoneNumber = itemView.findViewById(R.id.textViewConsigneePhoneNumber);
+            textViewOrderStatus = itemView.findViewById(R.id.textViewOrderStatus);
             recycleViewOrderDetails = itemView.findViewById(R.id.recycleViewOrderDetails);
         }
     }

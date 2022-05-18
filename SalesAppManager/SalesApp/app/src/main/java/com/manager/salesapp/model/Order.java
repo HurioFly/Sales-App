@@ -9,6 +9,9 @@ public class Order {
     @SerializedName("orderID")
     @Expose
     private int orderID;
+    @SerializedName("phoneNumber")
+    @Expose
+    private String phoneNumber;
     @SerializedName("consigneeName")
     @Expose
     private String consigneeName;
@@ -27,6 +30,9 @@ public class Order {
     @SerializedName("paymentMethods")
     @Expose
     private String paymentMethods;
+    @SerializedName("orderStatus")
+    @Expose
+    private String orderStatus;
     @SerializedName("orderDetails")
     @Expose
     private List<OrderDetails> orderDetailsList;
@@ -37,6 +43,14 @@ public class Order {
 
     public void setOrderID(int orderID) {
         this.orderID = orderID;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getConsigneeName() {
@@ -85,6 +99,14 @@ public class Order {
 
     public void setPaymentMethods(String paymentMethods) {
         this.paymentMethods = paymentMethods;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public List<OrderDetails> getOrderDetailsList() {

@@ -3,7 +3,9 @@ package com.manager.salesapp.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ProductType {
+import java.io.Serializable;
+
+public class ProductType implements Serializable {
 
     @SerializedName("productTypeID")
     @Expose

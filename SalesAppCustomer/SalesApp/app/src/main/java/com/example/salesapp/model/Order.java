@@ -27,6 +27,9 @@ public class Order {
     @SerializedName("paymentMethods")
     @Expose
     private String paymentMethods;
+    @SerializedName("orderStatus")
+    @Expose
+    private String orderStatus;
     @SerializedName("orderDetails")
     @Expose
     private List<OrderDetails> orderDetailsList;
@@ -85,6 +88,14 @@ public class Order {
 
     public void setPaymentMethods(String paymentMethods) {
         this.paymentMethods = paymentMethods;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public List<OrderDetails> getOrderDetailsList() {

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.manager.salesapp.R;
+import com.manager.salesapp.model.User;
 import com.manager.salesapp.retrofit.APISalesApp;
 import com.manager.salesapp.retrofit.RetrofitClient;
 import com.manager.salesapp.utils.Utils;
@@ -80,15 +81,21 @@ public class LoginActivity extends AppCompatActivity {
                 .subscribe(
                         userModel -> {
                             if(userModel.getSuccess()) {
-                                Utils.user = userModel.getUserList().get(0);
-                                Paper.book().write("user", Utils.user);
+                                User user = userModel.getUserList().get(0);
+                                if(user.getAccountType() == 1) {
+                                    Utils.user = user;
+                                    Paper.book().write("user", user);
 
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
-                                finish();
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else {
+                                    Toast.makeText(getApplicationContext(), "Tài khoản này không có quyền quản trị. Hãy sử dụng app dành cho khách hàng!", Toast.LENGTH_LONG).show();
+                                }
                             }
                             else {
-                                Toast.makeText(getApplicationContext(), "Tên tài khoản hoặc mật khẩu không chính xác!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Số điện thoại hoặc mật khẩu không chính xác!", Toast.LENGTH_LONG).show();
                             }
                         },
                         throwable -> {

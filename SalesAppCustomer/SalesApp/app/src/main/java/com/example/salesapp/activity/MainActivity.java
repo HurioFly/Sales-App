@@ -35,6 +35,7 @@ import com.example.salesapp.utils.Utils;
 import com.google.android.material.navigation.NavigationView;
 import com.nex3z.notificationbadge.NotificationBadge;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayoutMainPage;
     Toolbar toolbarMainPage;
     ViewFlipper viewFlipperAd;
-    RecyclerView recycleViewLatestProduct;
+    RecyclerView recycleViewLatestProduct, recycleViewLatestProduct2;
     NavigationView navigationViewMainPage;
     ListView listViewNavigationViewMainPage;
 
@@ -96,19 +97,18 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 1:
                         Intent phonePage = new Intent(getApplicationContext(), ProductActivity.class);
-                        phonePage.putExtra("productTypeID", productTypeList.get(i).getProductTypeID());
+                        phonePage.putExtra("productType", productTypeList.get(i));
                         startActivity(phonePage);
                         drawerLayoutMainPage.closeDrawer(GravityCompat.START);
                         break;
                     case 2:
                         Intent laptopPage = new Intent(getApplicationContext(), ProductActivity.class);
-                        laptopPage.putExtra("productTypeID", productTypeList.get(i).getProductTypeID());
+                        laptopPage.putExtra("productType", productTypeList.get(i));
                         startActivity(laptopPage);
                         drawerLayoutMainPage.closeDrawer(GravityCompat.START);
                         break;
                     case 3:
                         Intent orderHistoryPage = new Intent(getApplicationContext(), OrderHistoryActivity.class);
-                        orderHistoryPage.putExtra("productTypeID", productTypeList.get(i).getProductTypeID());
                         startActivity(orderHistoryPage);
                         drawerLayoutMainPage.closeDrawer(GravityCompat.START);
                         break;
@@ -163,6 +163,22 @@ public class MainActivity extends AppCompatActivity {
                                 productList = productModel.getProductList();
                                 latestProductAdapter = new LatestProductAdapter(getApplicationContext(), productList);
                                 recycleViewLatestProduct.setAdapter(latestProductAdapter);
+                            }
+                        },
+                        throwable -> {
+                            Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                ));
+
+        compositeDisposable.add(apiSalesApp.getLatestProduct()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        productModel -> {
+                            if(productModel.getSuccess()) {
+                                productList = productModel.getProductList();
+                                latestProductAdapter = new LatestProductAdapter(getApplicationContext(), productList);
+                                recycleViewLatestProduct2.setAdapter(latestProductAdapter);
                             }
                         },
                         throwable -> {
@@ -238,9 +254,13 @@ public class MainActivity extends AppCompatActivity {
         viewFlipperAd = findViewById(R.id.viewFlipperAd);
 
         recycleViewLatestProduct = findViewById(R.id.recycleViewLatestProduct);
+        recycleViewLatestProduct2 = findViewById(R.id.recycleViewLatestProduct2);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recycleViewLatestProduct.setLayoutManager(layoutManager);
         recycleViewLatestProduct.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recycleViewLatestProduct2.setLayoutManager(layoutManager2);
+        recycleViewLatestProduct2.setHasFixedSize(true);
 
         navigationViewMainPage = findViewById(R.id.navigationViewMainPage);
         listViewNavigationViewMainPage = findViewById(R.id.listViewNavigationViewMainPage);

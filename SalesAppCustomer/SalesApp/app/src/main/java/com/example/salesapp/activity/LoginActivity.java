@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.salesapp.R;
+import com.example.salesapp.model.User;
 import com.example.salesapp.retrofit.APISalesApp;
 import com.example.salesapp.retrofit.RetrofitClient;
 import com.example.salesapp.utils.Utils;
@@ -80,12 +81,18 @@ public class LoginActivity extends AppCompatActivity {
                 .subscribe(
                         userModel -> {
                             if(userModel.getSuccess()) {
-                                Utils.user = userModel.getUserList().get(0);
-                                Paper.book().write("user", Utils.user);
+                                User user = userModel.getUserList().get(0);
+                                if(user.getAccountType() == 0) {
+                                    Utils.user = user;
+                                    Paper.book().write("user", user);
 
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
-                                finish();
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else {
+                                    Toast.makeText(getApplicationContext(), "Tên tài khoản hoặc mật khẩu không chính xác!", Toast.LENGTH_LONG).show();
+                                }
                             }
                             else {
                                 Toast.makeText(getApplicationContext(), "Tên tài khoản hoặc mật khẩu không chính xác!", Toast.LENGTH_LONG).show();
